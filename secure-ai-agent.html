@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ 
 <title>Secure AI Agent — Phishing Assistant</title>
-
+ 
 <style>
 :root {
   --bg: #07100e;
@@ -19,13 +19,13 @@
   --red: #ff6464;
   --yellow: #ffc857;
 }
-
+ 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
+ 
 body {
   min-height: 100vh;
   background:
@@ -36,14 +36,14 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
   padding: 45px 20px;
 }
-
+ 
 .container {
   max-width: 900px;
   margin: auto;
 }
-
+ 
 /* HEADER */
-
+ 
 .topline {
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@ body {
   font-weight: 700;
   margin-bottom: 22px;
 }
-
+ 
 .dot {
   width: 7px;
   height: 7px;
@@ -62,18 +62,18 @@ body {
   background: var(--green);
   box-shadow: 0 0 12px var(--green);
 }
-
+ 
 h1 {
   font-size: clamp(42px, 8vw, 72px);
   line-height: .92;
   letter-spacing: -3px;
   max-width: 700px;
 }
-
+ 
 h1 span {
   color: var(--green);
 }
-
+ 
 .subtitle {
   max-width: 650px;
   color: var(--muted);
@@ -81,16 +81,53 @@ h1 span {
   margin: 20px 0 32px;
   font-size: 15px;
 }
-
+ 
+/* LANGUAGE */
+ 
+.language-switch {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: rgba(8, 18, 14, 0.65);
+  border: 1px solid rgba(93, 255, 174, 0.12);
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+ 
+.language-switch button {
+  padding: 0;
+  background: transparent;
+  color: #718c82;
+  border: 0;
+  border-radius: 0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+ 
+.language-switch button.active {
+  color: var(--green);
+}
+ 
+.language-switch span {
+  color: #3e5b51;
+  font-size: 9px;
+}
+ 
 /* TECH TAGS */
-
+ 
 .tags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 25px;
 }
-
+ 
 .tag {
   font-size: 10px;
   letter-spacing: 1px;
@@ -100,9 +137,9 @@ h1 span {
   border-radius: 6px;
   background: rgba(10,25,21,.7);
 }
-
+ 
 /* MAIN CARD */
-
+ 
 .card {
   border: 1px solid var(--border);
   background: var(--card);
@@ -111,7 +148,7 @@ h1 span {
   padding: 26px;
   box-shadow: 0 25px 80px rgba(0,0,0,.35);
 }
-
+ 
 .label {
   display: flex;
   justify-content: space-between;
@@ -121,12 +158,12 @@ h1 span {
   font-weight: 700;
   margin-bottom: 11px;
 }
-
+ 
 #counter {
   color: #577269;
   font-weight: 400;
 }
-
+ 
 textarea {
   width: 100%;
   min-height: 190px;
@@ -141,24 +178,24 @@ textarea {
   outline: none;
   transition: .2s;
 }
-
+ 
 textarea:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(53,230,154,.08);
 }
-
+ 
 textarea::placeholder {
   color: #4f6960;
 }
-
+ 
 /* BUTTONS */
-
+ 
 .actions {
   display: flex;
   gap: 10px;
   margin-top: 14px;
 }
-
+ 
 button {
   border-radius: 9px;
   padding: 14px 18px;
@@ -169,36 +206,36 @@ button {
   cursor: pointer;
   transition: .2s;
 }
-
+ 
 #analyzeBtn {
   background: var(--green);
   color: #03100b;
   flex: 1;
 }
-
+ 
 #analyzeBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px rgba(53,230,154,.18);
 }
-
+ 
 #exampleBtn {
   background: #10231d;
   color: #b7cbc3;
   border: 1px solid #27483d;
 }
-
+ 
 #exampleBtn:hover {
   border-color: #3a6656;
 }
-
+ 
 button:disabled {
   opacity: .5;
   cursor: not-allowed;
   transform: none !important;
 }
-
+ 
 /* INFO */
-
+ 
 .info {
   display: flex;
   gap: 8px;
@@ -208,9 +245,9 @@ button:disabled {
   line-height: 1.5;
   margin-top: 13px;
 }
-
+ 
 /* ERROR */
-
+ 
 #error {
   display: none;
   margin-top: 20px;
@@ -221,30 +258,30 @@ button:disabled {
   border-radius: 9px;
   font-size: 13px;
 }
-
+ 
 /* RESULT */
-
+ 
 #result {
   display: none;
   margin-top: 26px;
   padding-top: 25px;
   border-top: 1px solid var(--border);
 }
-
+ 
 .resultTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
-
+ 
 .resultLabel {
   color: #718c82;
   font-size: 10px;
   letter-spacing: 1.7px;
   font-weight: 700;
 }
-
+ 
 .risk {
   padding: 8px 13px;
   border-radius: 999px;
@@ -252,38 +289,38 @@ button:disabled {
   letter-spacing: .8px;
   font-weight: 800;
 }
-
+ 
 .low {
   color: var(--green);
   border: 1px solid rgba(53,230,154,.4);
   background: rgba(53,230,154,.08);
 }
-
+ 
 .medium {
   color: var(--yellow);
   border: 1px solid rgba(255,200,87,.4);
   background: rgba(255,200,87,.08);
 }
-
+ 
 .high {
   color: #ff7777;
   border: 1px solid rgba(255,100,100,.4);
   background: rgba(255,100,100,.08);
 }
-
+ 
 .sectionTitle {
   margin: 23px 0 11px;
   font-size: 11px;
   letter-spacing: 1.2px;
   color: #b9cac3;
 }
-
+ 
 #signals {
   display: grid;
   gap: 8px;
   list-style: none;
 }
-
+ 
 #signals li {
   background: #081410;
   border: 1px solid #18352c;
@@ -293,13 +330,13 @@ button:disabled {
   color: #aebfb8;
   line-height: 1.5;
 }
-
+ 
 #signals li::before {
   content: "⚠";
   color: var(--yellow);
   margin-right: 9px;
 }
-
+ 
 #recommendation {
   background: #081410;
   border: 1px solid #18352c;
@@ -310,9 +347,9 @@ button:disabled {
   font-size: 13px;
   line-height: 1.65;
 }
-
+ 
 /* SECURITY SECTION */
-
+ 
 .security {
   margin-top: 18px;
   padding: 18px;
@@ -320,7 +357,7 @@ button:disabled {
   background: var(--green-soft);
   border: 1px solid rgba(53,230,154,.18);
 }
-
+ 
 .securityTitle {
   color: var(--green);
   font-size: 11px;
@@ -328,15 +365,15 @@ button:disabled {
   font-weight: 800;
   margin-bottom: 8px;
 }
-
+ 
 .security p {
   color: #79988c;
   font-size: 12px;
   line-height: 1.6;
 }
-
+ 
 /* FOOTER */
-
+ 
 footer {
   text-align: center;
   color: #3e5b51;
@@ -345,391 +382,417 @@ footer {
   line-height: 1.8;
   margin-top: 25px;
 }
-
+ 
+.back-portfolio {
+  position: fixed;
+  top: 18px;
+  left: 22px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  color: #8fa99b;
+  background: rgba(8, 18, 14, 0.65);
+  border: 1px solid rgba(93, 255, 174, 0.12);
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+ 
+.back-portfolio:hover {
+  color: #b9ffd8;
+  border-color: rgba(93, 255, 174, 0.4);
+  background: rgba(15, 35, 26, 0.9);
+}
+ 
 @media (max-width:600px) {
   body {
     padding: 30px 15px;
   }
-
+ 
   h1 {
     letter-spacing: -2px;
   }
-
+ 
   .card {
     padding: 19px;
   }
-
+ 
   .actions {
     flex-direction: column;
   }
-
+ 
   #analyzeBtn,
   #exampleBtn {
     width: 100%;
   }
 }
-.back-portfolio {
-    position: fixed;
-    top: 18px;
-    left: 22px;
-    z-index: 1000;
-
-    display: inline-flex;
-    align-items: center;
-
-    padding: 7px 10px;
-
-    color: #8fa99b;
-    background: rgba(8, 18, 14, 0.65);
-    border: 1px solid rgba(93, 255, 174, 0.12);
-    border-radius: 6px;
-
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-decoration: none;
-
-    backdrop-filter: blur(8px);
-
-    transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.back-portfolio:hover {
-    color: #b9ffd8;
-    border-color: rgba(93, 255, 174, 0.4);
-    background: rgba(15, 35, 26, 0.9);
-}
-
+ 
 @media (max-width: 700px) {
-    .back-portfolio {
-        position: relative;
-        top: auto;
-        left: auto;
-        margin: 12px 14px 0;
-        font-size: 8px;
-    }
+  .back-portfolio {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 12px 14px 0;
+    font-size: 8px;
+  }
+ 
+  .language-switch {
+    top: 12px;
+    right: 14px;
+  }
 }
 </style>
 </head>
-
+ 
 <body>
-  <a href="index.html#projects" class="back-portfolio">
-    ← VOLTAR AO PORTFÓLIO
+ 
+<a href="index.html#projects" class="back-portfolio" id="backPortfolio">
+  ← VOLTAR AO PORTFÓLIO
 </a>
-
+ 
+<div class="language-switch" aria-label="Language selector">
+  <button id="langPt" class="active" type="button">PT</button>
+  <span>/</span>
+  <button id="langEn" type="button">EN</button>
+</div>
+ 
 <main class="container">
-
+ 
   <div class="topline">
     <span class="dot"></span>
-    SECURE AI SYSTEM ONLINE
+    <span id="systemOnline">SECURE AI SYSTEM ONLINE</span>
   </div>
-
+ 
   <h1>
     PHISHING<br>
     <span>ASSISTANT.</span>
   </h1>
-
-  <p class="subtitle">
+ 
+  <p class="subtitle" id="subtitle">
     Um agente de inteligência artificial desenvolvido para analisar
     mensagens suspeitas, identificar sinais de phishing e reconhecer
     tentativas de engenharia social.
   </p>
-
+ 
   <div class="tags">
     <span class="tag">AI AGENT</span>
     <span class="tag">CYBERSECURITY</span>
     <span class="tag">GEMINI</span>
     <span class="tag">PROMPT INJECTION DEFENSE</span>
   </div>
-
+ 
   <section class="card">
-
+ 
     <div class="label">
-      <span>MENSAGEM PARA ANÁLISE</span>
+      <span id="messageLabel">MENSAGEM PARA ANÁLISE</span>
       <span id="counter">0 / 5000</span>
     </div>
-
+ 
     <textarea
       id="message"
       maxlength="5000"
       placeholder="Cole aqui um e-mail, SMS ou mensagem suspeita..."
     ></textarea>
-
+ 
     <div class="actions">
-
+ 
       <button id="analyzeBtn">
         ANALISAR MENSAGEM
       </button>
-
+ 
       <button id="exampleBtn">
         TESTAR EXEMPLO
       </button>
-
+ 
     </div>
-
+ 
     <div class="info">
       <span>◈</span>
-      <span>
+      <span id="educationNotice">
         Demonstração educacional. Não insira senhas,
         dados bancários ou informações pessoais.
       </span>
     </div>
-
+ 
     <div id="error"></div>
-
+ 
     <div id="result">
-
+ 
       <div class="resultTop">
-
-        <div class="resultLabel">
+ 
+        <div class="resultLabel" id="resultLabel">
           RESULTADO DA ANÁLISE
         </div>
-
+ 
         <div id="risk" class="risk"></div>
-
+ 
       </div>
-
-      <div class="sectionTitle">
+ 
+      <div class="sectionTitle" id="signalsTitle">
         SINAIS IDENTIFICADOS
       </div>
-
+ 
       <ul id="signals"></ul>
-
-      <div class="sectionTitle">
+ 
+      <div class="sectionTitle" id="recommendationTitle">
         RECOMENDAÇÃO
       </div>
-
+ 
       <div id="recommendation"></div>
-
+ 
     </div>
-
+ 
   </section>
-
+ 
   <section class="security">
-
+ 
     <div class="securityTitle">
       ◈ PROMPT INJECTION DEFENSE
     </div>
-
-    <p>
+ 
+    <p id="securityText">
       O conteúdo enviado é tratado como dado não confiável para análise,
       separado das instruções internas do agente. Tentativas de alterar
       o comportamento do modelo dentro da própria mensagem são
       desconsideradas e podem ser identificadas como sinal de manipulação.
     </p>
-
+ 
   </section>
-
+ 
   <footer>
     SECURE AI AGENT · PHISHING ASSISTANT<br>
     AI SECURITY · INPUT VALIDATION · STRUCTURED OUTPUT · PROMPT INJECTION
   </footer>
-
+ 
 </main>
-
+ 
 <script>
-
+ 
 const messageInput = document.getElementById("message");
 const analyzeBtn = document.getElementById("analyzeBtn");
 const exampleBtn = document.getElementById("exampleBtn");
-
 const resultBox = document.getElementById("result");
 const errorBox = document.getElementById("error");
-
 const riskBox = document.getElementById("risk");
 const signalsBox = document.getElementById("signals");
-const recommendationBox =
-  document.getElementById("recommendation");
-
-const counter =
-  document.getElementById("counter");
-
-const exampleMessage =
-  "URGENTE: Sua conta será bloqueada hoje. " +
-  "Confirme imediatamente sua senha e seus dados no link abaixo " +
-  "para evitar a suspensão do acesso.";
-
-messageInput.addEventListener("input", () => {
-  counter.textContent =
-    messageInput.value.length + " / 5000";
-});
-
-exampleBtn.addEventListener("click", () => {
-
-  messageInput.value = exampleMessage;
-
-  counter.textContent =
-    messageInput.value.length + " / 5000";
-
-  messageInput.focus();
-});
-
-analyzeBtn.addEventListener(
-  "click",
-  analyzeMessage
-);
-
-async function analyzeMessage() {
-
-  const message =
-    messageInput.value.trim();
-
+const recommendationBox = document.getElementById("recommendation");
+const counter = document.getElementById("counter");
+const langPt = document.getElementById("langPt");
+const langEn = document.getElementById("langEn");
+ 
+let currentLanguage = "pt";
+let lastResult = null;
+ 
+const translations = {
+  pt: {
+    htmlLang: "pt-BR",
+    backPortfolio: "← VOLTAR AO PORTFÓLIO",
+    subtitle: "Um agente de inteligência artificial desenvolvido para analisar mensagens suspeitas, identificar sinais de phishing e reconhecer tentativas de engenharia social.",
+    messageLabel: "MENSAGEM PARA ANÁLISE",
+    placeholder: "Cole aqui um e-mail, SMS ou mensagem suspeita...",
+    analyze: "ANALISAR MENSAGEM",
+    analyzing: "ANALISANDO...",
+    example: "TESTAR EXEMPLO",
+    educationNotice: "Demonstração educacional. Não insira senhas, dados bancários ou informações pessoais.",
+    resultLabel: "RESULTADO DA ANÁLISE",
+    signalsTitle: "SINAIS IDENTIFICADOS",
+    recommendationTitle: "RECOMENDAÇÃO",
+    securityText: "O conteúdo enviado é tratado como dado não confiável para análise, separado das instruções internas do agente. Tentativas de alterar o comportamento do modelo dentro da própria mensagem são desconsideradas e podem ser identificadas como sinal de manipulação.",
+    emptyMessage: "Cole ou digite uma mensagem antes de analisar.",
+    genericError: "Não foi possível analisar a mensagem.",
+    connectionError: "Erro ao conectar com o Secure AI Agent.",
+    noSignals: "Nenhum sinal relevante de phishing foi identificado.",
+    defaultRecommendation: "Confirme a origem da mensagem antes de interagir.",
+    risk: {
+      "BAIXO": "RISCO BAIXO",
+      "MÉDIO": "RISCO MÉDIO",
+      "MEDIO": "RISCO MÉDIO",
+      "ALTO": "RISCO ALTO"
+    },
+    exampleMessage: "URGENTE: Sua conta será bloqueada hoje. Confirme imediatamente sua senha e seus dados no link abaixo para evitar a suspensão do acesso."
+  },
+ 
+  en: {
+    htmlLang: "en",
+    backPortfolio: "← BACK TO PORTFOLIO",
+    subtitle: "An artificial intelligence agent designed to analyze suspicious messages, identify phishing signals, and recognize social engineering attempts.",
+    messageLabel: "MESSAGE TO ANALYZE",
+    placeholder: "Paste a suspicious email, SMS, or message here...",
+    analyze: "ANALYZE MESSAGE",
+    analyzing: "ANALYZING...",
+    example: "TRY EXAMPLE",
+    educationNotice: "Educational demonstration. Do not enter passwords, banking details, or personal information.",
+    resultLabel: "ANALYSIS RESULT",
+    signalsTitle: "IDENTIFIED SIGNALS",
+    recommendationTitle: "RECOMMENDATION",
+    securityText: "Submitted content is treated as untrusted data for analysis and kept separate from the agent's internal instructions. Attempts to change the model's behavior inside the analyzed message are ignored and may be identified as manipulation signals.",
+    emptyMessage: "Paste or type a message before analyzing it.",
+    genericError: "The message could not be analyzed.",
+    connectionError: "Could not connect to the Secure AI Agent.",
+    noSignals: "No relevant phishing signals were identified.",
+    defaultRecommendation: "Verify the source of the message before interacting with it.",
+    risk: {
+      "BAIXO": "LOW RISK",
+      "MÉDIO": "MEDIUM RISK",
+      "MEDIO": "MEDIUM RISK",
+      "ALTO": "HIGH RISK"
+    },
+    exampleMessage: "URGENT: Your account will be blocked today. Confirm your password and personal information immediately using the link below to avoid suspension."
+  }
+};
+ 
+function applyLanguage(language) {
+  currentLanguage = language;
+  const t = translations[language];
+ 
+  document.documentElement.lang = t.htmlLang;
+  document.getElementById("backPortfolio").textContent = t.backPortfolio;
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("messageLabel").textContent = t.messageLabel;
+  messageInput.placeholder = t.placeholder;
+  analyzeBtn.textContent = t.analyze;
+  exampleBtn.textContent = t.example;
+  document.getElementById("educationNotice").textContent = t.educationNotice;
+  document.getElementById("resultLabel").textContent = t.resultLabel;
+  document.getElementById("signalsTitle").textContent = t.signalsTitle;
+  document.getElementById("recommendationTitle").textContent = t.recommendationTitle;
+  document.getElementById("securityText").textContent = t.securityText;
+ 
+  langPt.classList.toggle("active", language === "pt");
+  langEn.classList.toggle("active", language === "en");
+ 
   errorBox.style.display = "none";
-  resultBox.style.display = "none";
-
-  if (!message) {
-
-    showError(
-      "Cole ou digite uma mensagem antes de analisar."
-    );
-
-    return;
-  }
-
-  analyzeBtn.disabled = true;
-  exampleBtn.disabled = true;
-
-  analyzeBtn.textContent =
-    "ANALISANDO...";
-
-  try {
-
-    const response =
-      await fetch("/api/gemini", {
-
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-          message: message
-        })
-      });
-
-    const data =
-      await response.json();
-
-    if (!response.ok) {
-
-      throw new Error(
-        data.error ||
-        "Não foi possível analisar a mensagem."
-      );
-    }
-
-    showResult(data);
-
-  }
-
-  catch (error) {
-
-    console.error(error);
-
-    showError(
-      error.message ||
-      "Erro ao conectar com o Secure AI Agent."
-    );
-  }
-
-  finally {
-
-    analyzeBtn.disabled = false;
-    exampleBtn.disabled = false;
-
-    analyzeBtn.textContent =
-      "ANALISAR MENSAGEM";
+ 
+  if (lastResult) {
+    resultBox.style.display = "none";
+    lastResult = null;
   }
 }
-
+ 
+langPt.addEventListener("click", () => applyLanguage("pt"));
+langEn.addEventListener("click", () => applyLanguage("en"));
+ 
+messageInput.addEventListener("input", () => {
+  counter.textContent = messageInput.value.length + " / 5000";
+});
+ 
+exampleBtn.addEventListener("click", () => {
+  messageInput.value = translations[currentLanguage].exampleMessage;
+  counter.textContent = messageInput.value.length + " / 5000";
+  messageInput.focus();
+});
+ 
+analyzeBtn.addEventListener("click", analyzeMessage);
+ 
+async function analyzeMessage() {
+  const message = messageInput.value.trim();
+  const t = translations[currentLanguage];
+ 
+  errorBox.style.display = "none";
+  resultBox.style.display = "none";
+ 
+  if (!message) {
+    showError(t.emptyMessage);
+    return;
+  }
+ 
+  analyzeBtn.disabled = true;
+  exampleBtn.disabled = true;
+  analyzeBtn.textContent = t.analyzing;
+ 
+  try {
+    const response = await fetch("/api/gemini", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: message,
+        language: currentLanguage
+      })
+    });
+ 
+    const data = await response.json();
+ 
+    if (!response.ok) {
+      throw new Error(data.error || t.genericError);
+    }
+ 
+    lastResult = data;
+    showResult(data);
+  }
+ 
+  catch (error) {
+    console.error(error);
+    showError(error.message || t.connectionError);
+  }
+ 
+  finally {
+    analyzeBtn.disabled = false;
+    exampleBtn.disabled = false;
+    analyzeBtn.textContent = translations[currentLanguage].analyze;
+  }
+}
+ 
 function showResult(data) {
-
-  const risk =
-    String(data.risk || "")
-      .toUpperCase();
-
-  riskBox.textContent =
-    "RISCO " + risk;
-
-  riskBox.className =
-    "risk";
-
+  const t = translations[currentLanguage];
+  const risk = String(data.risk || "").toUpperCase();
+ 
+  riskBox.textContent = t.risk[risk] || (currentLanguage === "en" ? "RISK " + risk : "RISCO " + risk);
+  riskBox.className = "risk";
+ 
   if (risk === "ALTO") {
-
     riskBox.classList.add("high");
-
   }
-
-  else if (risk === "MÉDIO") {
-
+  else if (risk === "MÉDIO" || risk === "MEDIO") {
     riskBox.classList.add("medium");
-
   }
-
   else {
-
     riskBox.classList.add("low");
-
   }
-
+ 
   signalsBox.innerHTML = "";
-
-  const signals =
-    Array.isArray(data.signals)
-      ? data.signals
-      : [];
-
+ 
+  const signals = Array.isArray(data.signals) ? data.signals : [];
+ 
   if (signals.length === 0) {
-
-    const item =
-      document.createElement("li");
-
-    item.textContent =
-      "Nenhum sinal relevante de phishing foi identificado.";
-
+    const item = document.createElement("li");
+    item.textContent = t.noSignals;
     signalsBox.appendChild(item);
   }
-
   else {
-
     signals.forEach(signal => {
-
-      const item =
-        document.createElement("li");
-
+      const item = document.createElement("li");
       item.textContent = signal;
-
       signalsBox.appendChild(item);
     });
   }
-
-  recommendationBox.textContent =
-    data.recommendation ||
-    "Confirme a origem da mensagem antes de interagir.";
-
-  resultBox.style.display =
-    "block";
-
+ 
+  recommendationBox.textContent = data.recommendation || t.defaultRecommendation;
+  resultBox.style.display = "block";
+ 
   resultBox.scrollIntoView({
     behavior: "smooth",
     block: "nearest"
   });
 }
-
+ 
 function showError(message) {
-
-  errorBox.textContent =
-    message;
-
-  errorBox.style.display =
-    "block";
+  errorBox.textContent = message;
+  errorBox.style.display = "block";
 }
-
+ 
+applyLanguage("pt");
+ 
 </script>
-
+ 
 </body>
 </html>
