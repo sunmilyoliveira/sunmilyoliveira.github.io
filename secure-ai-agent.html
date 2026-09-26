@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Secure AI Agent — Phishing Assistant</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, #10283a 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #10251f 0%, transparent 35%),
+        #070b10;
+      color: #e8f0f7;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 18px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 820px;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid #2fdb9d;
+      color: #2fdb9d;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 7vw, 64px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      color: #2fdb9d;
+    }
+
+    .subtitle {
+      color: #91a2b2;
+      line-height: 1.6;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(13, 20, 27, 0.92);
+      border: 1px solid #25333e;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .label {
+      display: block;
+      font-size: 13px;
+      color: #aab8c4;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 190px;
+      resize: vertical;
+      border: 1px solid #30414e;
+      background: #090e13;
+      color: #eef6fb;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      line-height: 1.5;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    textarea:focus {
+      border-color: #2fdb9d;
+      box-shadow: 0 0 0 3px rgba(47, 219, 157, 0.08);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #analyzeBtn {
+      background: #2fdb9d;
+      color: #04110c;
+      flex: 1;
+      min-width: 190px;
+    }
+
+    #analyzeBtn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    #exampleBtn {
+      background: #18232c;
+      color: #c6d2dc;
+      border: 1px solid #30414e;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .privacy {
+      color: #657887;
+      font-size: 11px;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    #error {
+      display: none;
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #713535;
+      background: #241313;
+      color: #ffb3b3;
+      line-height: 1.5;
+    }
+
+    #result {
+      display: none;
+      margin-top: 22px;
+      border-top: 1px solid #25333e;
+      padding-top: 22px;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .result-title {
+      color: #91a2b2;
+      font-size: 12px;
+      letter-spacing: 1.4px;
+    }
+
+    .risk {
+      font-size: 13px;
+      font-weight: bold;
+      padding: 8px 13px;
+      border-radius: 999px;
+    }
+
+    .risk-low {
+      background: rgba(47, 219, 157, 0.12);
+      color: #2fdb9d;
+      border: 1px solid rgba(47, 219, 157, 0.4);
+    }
+
+    .risk-medium {
+      background: rgba(245, 185, 66, 0.12);
+      color: #f5b942;
+      border: 1px solid rgba(245, 185, 66, 0.4);
+    }
+
+    .risk-high {
+      background: rgba(255, 91, 91, 0.12);
+      color: #ff6b6b;
+      border: 1px solid rgba(255, 91, 91, 0.4);
+    }
+
+    .section-title {
+      margin: 18px 0 10px;
+      font-size: 13px;
+      color: #d7e1e8;
+    }
+
+    #signals {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    #signals li {
+      background: #0b1218;
+      border: 1px solid #21303b;
+      padding: 11px 13px;
+      border-radius: 9px;
+      color: #bdc9d2;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    #signals li::before {
+      content: "⚠";
+      margin-right: 8px;
+      color: #f5b942;
+    }
+
+    #recommendation {
+      background: #0b1218;
+      border-left: 3px solid #2fdb9d;
+      border-radius: 8px;
+      padding: 14px;
+      color: #c7d2da;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #526472;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 18px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      #analyzeBtn,
+      #exampleBtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <div class="badge">AI + CYBERSECURITY</div>
+
+    <h1>
+      SECURE AI<br>
+      <span>AGENT</span>
+    </h1>
+
+    <p class="subtitle">
+      Phishing Assistant — analise mensagens suspeitas com inteligência
+      artificial e identifique sinais de phishing e engenharia social.
+    </p>
+
+    <section class="card">
+
+      <label class="label" for="message">
+        MENSAGEM PARA ANÁLISE
+      </label>
+
+      <textarea
+        id="message"
+        maxlength="5000"
+        placeholder="Cole aqui um e-mail, SMS ou mensagem suspeita..."
+      ></textarea>
+
+      <div class="actions">
+
+        <button id="analyzeBtn">
+          ANALISAR MENSAGEM
+        </button>
+
+        <button id="exampleBtn">
+          USAR EXEMPLO
+        </button>
+
+      </div>
+
+      <p class="privacy">
+        Demonstração educacional. Evite inserir senhas, dados bancários
+        ou outras informações pessoais.
+      </p>
+
+      <div id="error"></div>
+
+      <div id="result">
+
+        <div class="result-header">
+
+          <div class="result-title">
+            RESULTADO DA ANÁLISE
+          </div>
+
+          <div id="risk" class="risk"></div>
+
+        </div>
+
+        <h3 class="section-title">
+          SINAIS IDENTIFICADOS
+        </h3>
+
+        <ul id="signals"></ul>
+
+        <h3 class="section-title">
+          RECOMENDAÇÃO
+        </h3>
+
+        <div id="recommendation"></div>
+
+      </div>
+
+    </section>
+
+    <div class="footer">
+      Secure AI Agent · Phishing Assistant<br>
+      Projeto demonstrativo de AI Security e proteção contra Prompt Injection
+    </div>
+
+  </main>
+
+  <script>
+    const messageInput = document.getElementById("message");
+    const analyzeBtn = document.getElementById("analyzeBtn");
+    const exampleBtn = document.getElementById("exampleBtn");
+
+    const resultBox = document.getElementById("result");
+    const errorBox = document.getElementById("error");
+
+    const riskBox = document.getElementById("risk");
+    const signalsBox = document.getElementById("signals");
+    const recommendationBox =
+      document.getElementById("recommendation");
+
+    const exampleMessage =
+      "URGENTE: Sua conta será bloqueada hoje. " +
+      "Confirme imediatamente sua senha e seus dados no link abaixo " +
+      "para evitar a suspensão do acesso.";
+
+    exampleBtn.addEventListener("click", () => {
+      messageInput.value = exampleMessage;
+      messageInput.focus();
+    });
+
+    analyzeBtn.addEventListener("click", analyzeMessage);
+
+    async function analyzeMessage() {
+
+      const message = messageInput.value.trim();
+
+      errorBox.style.display = "none";
+      resultBox.style.display = "none";
+
+      if (!message) {
+        showError("Cole ou digite uma mensagem antes de analisar.");
+        return;
+      }
+
+      analyzeBtn.disabled = true;
+      exampleBtn.disabled = true;
+      analyzeBtn.textContent = "ANALISANDO...";
+
+      try {
+
+        const response = await fetch("/api/gemini", {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            message: message
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.error || "Não foi possível analisar a mensagem."
+          );
+        }
+
+        showResult(data);
+
+      } catch (error) {
+
+        console.error(error);
+
+        showError(
+          error.message ||
+          "Ocorreu um erro ao conectar com o Secure AI Agent."
+        );
+
+      } finally {
+
+        analyzeBtn.disabled = false;
+        exampleBtn.disabled = false;
+        analyzeBtn.textContent = "ANALISAR MENSAGEM";
+      }
+    }
+
+    function showResult(data) {
+
+      const risk = String(data.risk || "").toUpperCase();
+
+      riskBox.textContent = "RISCO " + risk;
+
+      riskBox.className = "risk";
+
+      if (risk === "ALTO") {
+        riskBox.classList.add("risk-high");
+      } else if (risk === "MÉDIO") {
+        riskBox.classList.add("risk-medium");
+      } else {
+        riskBox.classList.add("risk-low");
+      }
+
+      signalsBox.innerHTML = "";
+
+      const signals = Array.isArray(data.signals)
+        ? data.signals
+        : [];
+
+      if (signals.length === 0) {
+
+        const item = document.createElement("li");
+        item.textContent =
+          "Nenhum sinal relevante de phishing foi identificado.";
+
+        signalsBox.appendChild(item);
+
+      } else {
+
+        signals.forEach((signal) => {
+
+          const item = document.createElement("li");
+
+          item.textContent = signal;
+
+          signalsBox.appendChild(item);
+
+        });
+      }
+
+      recommendationBox.textContent =
+        data.recommendation ||
+        "Confirme a origem da mensagem antes de interagir.";
+
+      resultBox.style.display = "block";
+
+      resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    function showError(message) {
+
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
