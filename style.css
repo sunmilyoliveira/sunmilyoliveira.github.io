@@ -1682,3 +1682,719 @@ button {
     }
 
 }
+
+
+/* =========================================================
+   CYBER CITY — PROJECT CASE
+========================================================= */
+
+.project-page {
+    background:
+        radial-gradient(
+            circle at 82% 8%,
+            rgba(45, 212, 163, 0.055),
+            transparent 24%
+        ),
+        var(--bg);
+}
+
+
+/* =========================================================
+   CASE HERO
+========================================================= */
+
+.case-hero {
+    position: relative;
+
+    min-height: 680px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 150px 0 90px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--border);
+
+    background:
+        radial-gradient(
+            circle at 78% 45%,
+            rgba(45, 212, 163, 0.11),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(197, 150, 98, 0.07),
+            transparent 22%
+        ),
+        linear-gradient(
+            135deg,
+            #07110f 0%,
+            #091914 60%,
+            #07110f 100%
+        );
+}
+
+.case-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -160px;
+    top: 90px;
+
+    border: 1px solid rgba(45, 212, 163, 0.08);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 70px rgba(45, 212, 163, 0.018),
+        0 0 0 140px rgba(45, 212, 163, 0.012);
+
+    pointer-events: none;
+}
+
+.case-hero-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+.case-back {
+    display: inline-block;
+
+    margin-bottom: 72px;
+
+    color: var(--muted-dark);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.case-back:hover {
+    color: var(--green);
+
+    transform: translateX(-4px);
+}
+
+.case-eyebrow,
+.case-kicker {
+    color: var(--green);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.17em;
+}
+
+.case-eyebrow {
+    margin-bottom: 22px;
+}
+
+.case-hero h1 {
+    max-width: 850px;
+
+    font-size: clamp(4.6rem, 10vw, 8.5rem);
+    font-weight: 600;
+
+    line-height: 0.88;
+
+    letter-spacing: -0.065em;
+}
+
+.case-lead {
+    max-width: 650px;
+
+    margin-top: 35px;
+
+    color: #bdc9c5;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+}
+
+.case-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 38px;
+}
+
+.case-tags span {
+    padding: 8px 13px;
+
+    border: 1px solid #294039;
+    border-radius: 100px;
+
+    color: #9cafaa;
+
+    background: rgba(7, 17, 15, 0.45);
+
+    font-size: 0.69rem;
+}
+
+
+/* =========================================================
+   CASE SECTIONS
+========================================================= */
+
+.case-section {
+    padding: 120px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.case-section-alt {
+    background: #091512;
+}
+
+.case-layout {
+    display: grid;
+
+    grid-template-columns: 75px minmax(0, 1fr);
+
+    gap: 40px;
+}
+
+.case-section-number {
+    padding-top: 4px;
+
+    color: var(--earth);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+.case-section-content {
+    max-width: 930px;
+}
+
+.case-kicker {
+    margin-bottom: 20px;
+}
+
+.case-section-content > h2 {
+    max-width: 780px;
+
+    margin-bottom: 30px;
+
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    font-weight: 500;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.05em;
+}
+
+.case-section-content > p:not(.case-kicker) {
+    max-width: 690px;
+
+    color: var(--muted);
+
+    font-size: 0.98rem;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   CASE IMAGES
+========================================================= */
+
+.case-image {
+    position: relative;
+
+    margin-top: 65px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d1c18,
+            #08120f
+        );
+
+    border: 1px solid #1b2c26;
+}
+
+.case-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    border: 1px solid rgba(255, 255, 255, 0.025);
+
+    pointer-events: none;
+}
+
+.case-image img {
+    width: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.55s ease,
+        filter 0.4s ease;
+}
+
+.case-image:hover img {
+    transform: scale(1.012);
+}
+
+.case-image-large img {
+    min-height: 460px;
+}
+
+.case-image-medium {
+    max-width: 760px;
+}
+
+.case-image-medium img {
+    min-height: 390px;
+}
+
+
+/* =========================================================
+   NETWORK CONCEPT CARDS
+========================================================= */
+
+.case-grid-three {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 60px;
+}
+
+.case-mini-card {
+    min-height: 245px;
+
+    padding: 28px;
+
+    background: #0b1a16;
+
+    border: 1px solid #1a2b25;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.case-mini-card:hover {
+    transform: translateY(-5px);
+
+    background: #0d1e19;
+
+    border-color: rgba(45, 212, 163, 0.35);
+}
+
+.case-mini-card > span {
+    display: block;
+
+    margin-bottom: 58px;
+
+    color: var(--earth);
+
+    font-size: 0.62rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+}
+
+.case-mini-card h3 {
+    margin-bottom: 13px;
+
+    font-size: 1.45rem;
+
+    letter-spacing: -0.03em;
+}
+
+.case-mini-card p {
+    color: var(--muted);
+
+    font-size: 0.84rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TECHNICAL NOTE
+========================================================= */
+
+.case-note {
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    gap: 25px;
+
+    max-width: 800px;
+
+    margin-top: 42px;
+
+    padding: 28px 0;
+
+    border-top: 1px solid rgba(197, 150, 98, 0.25);
+    border-bottom: 1px solid rgba(197, 150, 98, 0.25);
+}
+
+.case-note > span {
+    padding-top: 4px;
+
+    color: var(--earth);
+
+    font-size: 0.62rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+}
+
+.case-note p {
+    color: #aab7b2;
+
+    font-size: 0.86rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SKILLS / CONFIGURATION
+========================================================= */
+
+.case-skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 60px;
+
+    border-top: 1px solid #22342e;
+    border-left: 1px solid #22342e;
+}
+
+.case-skills-grid article {
+    min-height: 230px;
+
+    padding: 27px;
+
+    border-right: 1px solid #22342e;
+    border-bottom: 1px solid #22342e;
+
+    transition: background 0.25s ease;
+}
+
+.case-skills-grid article:hover {
+    background: rgba(45, 212, 163, 0.025);
+}
+
+.case-skills-grid article > span {
+    display: block;
+
+    margin-bottom: 42px;
+
+    color: var(--earth);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.case-skills-grid h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.15rem;
+}
+
+.case-skills-grid p {
+    color: var(--muted);
+
+    font-size: 0.82rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ENVIRONMENT GALLERY
+========================================================= */
+
+.case-gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 65px;
+}
+
+.case-gallery figure {
+    margin: 0;
+
+    overflow: hidden;
+}
+
+.case-gallery img {
+    height: 280px;
+
+    object-fit: cover;
+
+    border: 1px solid #1b2d27;
+
+    filter:
+        saturate(0.9)
+        contrast(1.02);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.35s ease;
+}
+
+.case-gallery figure:hover img {
+    transform: scale(1.015);
+
+    filter:
+        saturate(1)
+        contrast(1.02);
+}
+
+.case-gallery figcaption {
+    margin-top: 12px;
+
+    color: var(--muted-dark);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   LEARNING QUOTE
+========================================================= */
+
+.case-section blockquote {
+    max-width: 790px;
+
+    margin-top: 55px;
+
+    padding: 35px 0 35px 35px;
+
+    border-left: 1px solid var(--green);
+
+    color: #d7dfdc;
+
+    font-size: clamp(1.35rem, 2.7vw, 2.1rem);
+    font-weight: 400;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   NEXT PROJECT
+========================================================= */
+
+.case-next {
+    padding: 115px 0 125px;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(45, 212, 163, 0.07),
+            transparent 30%
+        ),
+        #07110f;
+}
+
+.case-next p {
+    margin-bottom: 18px;
+
+    color: var(--earth);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+.case-next h2 {
+    margin-bottom: 35px;
+
+    font-size: clamp(3rem, 7vw, 6.2rem);
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: -0.055em;
+}
+
+.case-next a {
+    display: inline-block;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid var(--green);
+
+    color: var(--green);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.case-next a:hover {
+    color: var(--green-light);
+
+    border-color: var(--green-light);
+}
+
+
+/* =========================================================
+   CYBER CITY — TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .case-hero {
+        min-height: 620px;
+    }
+
+    .case-layout {
+        grid-template-columns: 50px minmax(0, 1fr);
+
+        gap: 25px;
+    }
+
+    .case-grid-three,
+    .case-skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .case-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   CYBER CITY — MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .case-hero {
+        min-height: 600px;
+
+        padding-top: 125px;
+        padding-bottom: 70px;
+    }
+
+    .case-hero::after {
+        width: 350px;
+        height: 350px;
+
+        right: -220px;
+    }
+
+    .case-back {
+        margin-bottom: 55px;
+    }
+
+    .case-hero h1 {
+        font-size: clamp(4rem, 20vw, 6rem);
+    }
+
+    .case-lead {
+        font-size: 0.96rem;
+    }
+
+    .case-section {
+        padding: 85px 0;
+    }
+
+    .case-layout {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .case-section-number {
+        padding-top: 0;
+    }
+
+    .case-grid-three,
+    .case-skills-grid,
+    .case-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .case-mini-card {
+        min-height: 210px;
+    }
+
+    .case-mini-card > span {
+        margin-bottom: 40px;
+    }
+
+    .case-note {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .case-image {
+        margin-top: 45px;
+    }
+
+    .case-image-large img,
+    .case-image-medium img {
+        min-height: 260px;
+    }
+
+    .case-gallery img {
+        height: 260px;
+    }
+
+    .case-section blockquote {
+        margin-top: 42px;
+
+        padding: 25px 0 25px 22px;
+
+        font-size: 1.3rem;
+    }
+
+    .case-next {
+        padding: 90px 0;
+    }
+
+}
