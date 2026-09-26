@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Portfólio de Sunmily Oliveira: tecnologia, inteligência artificial, cibersegurança, redes e projetos de impacto.">
+    <meta
+        name="description"
+        content="Portfólio de Sunmily Oliveira: tecnologia, inteligência artificial, cibersegurança, redes e projetos de impacto."
+        id="meta-description"
+    >
 
     <title>Sunmily Oliveira | Technology Portfolio</title>
 
@@ -27,16 +30,32 @@
             </a>
 
             <div class="nav-links">
-                <a href="#about">Sobre</a>
-                <a href="#projects">Projetos</a>
-                <a href="#journey">Trajetória</a>
-                <a href="#contact">Contato</a>
+                <a href="#about" data-pt="Sobre" data-en="About">Sobre</a>
+                <a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a>
+                <a href="#journey" data-pt="Trajetória" data-en="Journey">Trajetória</a>
+                <a href="#contact" data-pt="Contato" data-en="Contact">Contato</a>
             </div>
 
             <div class="language-switch">
-                <button class="language active">PT</button>
+                <button
+                    class="language active"
+                    id="lang-pt"
+                    type="button"
+                    aria-label="Alterar idioma para português"
+                >
+                    PT
+                </button>
+
                 <span>/</span>
-                <button class="language">EN</button>
+
+                <button
+                    class="language"
+                    id="lang-en"
+                    type="button"
+                    aria-label="Switch language to English"
+                >
+                    EN
+                </button>
             </div>
 
         </nav>
@@ -51,12 +70,12 @@
 
         <section class="hero" id="home">
 
-            <!-- Background da Amazônia -->
             <div class="hero-background" aria-hidden="true"></div>
             <div class="hero-overlay" aria-hidden="true"></div>
 
 
-            <!-- Rede tecnológica animada -->
+            <!-- ANIMATED TECHNOLOGY NETWORK -->
+
             <div class="hero-tech" aria-hidden="true">
 
                 <svg
@@ -85,8 +104,6 @@
 
                     </defs>
 
-
-                    <!-- Conexões -->
 
                     <g class="tech-lines">
 
@@ -121,8 +138,6 @@
                     </g>
 
 
-                    <!-- Nós -->
-
                     <g class="tech-nodes">
 
                         <circle cx="75" cy="390" r="5" />
@@ -137,8 +152,6 @@
 
                     </g>
 
-
-                    <!-- Pulsos viajando pelas conexões -->
 
                     <circle
                         class="data-pulse pulse-green"
@@ -191,8 +204,6 @@
             </div>
 
 
-            <!-- Conteúdo principal -->
-
             <div class="hero-inner container">
 
                 <div class="hero-content">
@@ -202,11 +213,22 @@
                     </p>
 
                     <h1>
-                        Tecnologia para
-                        <span>problemas reais.</span>
+                        <span
+                            data-pt="Tecnologia para"
+                            data-en="Technology for"
+                        >Tecnologia para</span>
+
+                        <span
+                            data-pt="problemas reais."
+                            data-en="real-world problems."
+                        >problemas reais.</span>
                     </h1>
 
-                    <p class="hero-description">
+                    <p
+                        class="hero-description"
+                        data-pt="Construindo uma trajetória que conecta análise, segurança, inovação e impacto para transformar problemas reais em soluções."
+                        data-en="Building a path that connects analysis, security, innovation and impact to turn real-world problems into solutions."
+                    >
                         Construindo uma trajetória que conecta análise,
                         segurança, inovação e impacto para transformar
                         problemas reais em soluções.
@@ -214,11 +236,21 @@
 
                     <div class="hero-buttons">
 
-                        <a href="#projects" class="button button-primary">
+                        <a
+                            href="#projects"
+                            class="button button-primary"
+                            data-pt="Ver projetos"
+                            data-en="View projects"
+                        >
                             Ver projetos
                         </a>
 
-                        <a href="#about" class="button button-secondary">
+                        <a
+                            href="#about"
+                            class="button button-secondary"
+                            data-pt="Sobre mim"
+                            data-en="About me"
+                        >
                             Sobre mim
                         </a>
 
@@ -245,7 +277,13 @@
 
                     <div>
                         <p class="section-label">ABOUT</p>
-                        <h2>Sobre mim</h2>
+
+                        <h2
+                            data-pt="Sobre mim"
+                            data-en="About me"
+                        >
+                            Sobre mim
+                        </h2>
                     </div>
 
                 </div>
@@ -256,9 +294,20 @@
                     <div class="about-statement">
 
                         <h3>
-                            Da saúde à tecnologia,
-                            uma trajetória construída
-                            para <span>resolver problemas.</span>
+                            <span
+                                data-pt="Da saúde à tecnologia,"
+                                data-en="From healthcare to technology,"
+                            >Da saúde à tecnologia,</span>
+
+                            <span
+                                data-pt="uma trajetória construída para"
+                                data-en="a journey built around"
+                            >uma trajetória construída para</span>
+
+                            <span
+                                data-pt="resolver problemas."
+                                data-en="solving problems."
+                            >resolver problemas.</span>
                         </h3>
 
                     </div>
@@ -266,21 +315,31 @@
 
                     <div class="about-copy">
 
-                        <p class="about-lead">
+                        <p
+                            class="about-lead"
+                            data-pt="Sou farmacêutica em transição para tecnologia, trazendo comigo uma formação construída em ambientes onde análise, investigação, qualidade e precisão fazem parte do cotidiano."
+                            data-en="I am a pharmacist transitioning into technology, bringing experience from environments where analysis, investigation, quality and precision are part of everyday work."
+                        >
                             Sou farmacêutica em transição para tecnologia,
                             trazendo comigo uma formação construída em ambientes
                             onde análise, investigação, qualidade e precisão
                             fazem parte do cotidiano.
                         </p>
 
-                        <p>
+                        <p
+                            data-pt="Minha experiência profissional e acadêmica me ensinou a observar problemas, organizar informações, investigar causas e transformar conhecimento técnico em soluções aplicáveis."
+                            data-en="My professional and academic experience taught me to examine problems, organize information, investigate root causes and turn technical knowledge into practical solutions."
+                        >
                             Minha experiência profissional e acadêmica me ensinou
                             a observar problemas, organizar informações, investigar
                             causas e transformar conhecimento técnico em soluções
                             aplicáveis.
                         </p>
 
-                        <p>
+                        <p
+                            data-pt="Hoje direciono essa forma de pensar para desenvolvimento de software, inteligência artificial, cibersegurança e redes."
+                            data-en="Today, I apply this way of thinking to software development, artificial intelligence, cybersecurity and computer networks."
+                        >
                             Hoje direciono essa forma de pensar para
                             desenvolvimento de software, inteligência artificial,
                             cibersegurança e redes.
@@ -295,22 +354,22 @@
 
                     <div>
                         <span>01</span>
-                        <p>Analisar</p>
+                        <p data-pt="Analisar" data-en="Analyze">Analisar</p>
                     </div>
 
                     <div>
                         <span>02</span>
-                        <p>Investigar</p>
+                        <p data-pt="Investigar" data-en="Investigate">Investigar</p>
                     </div>
 
                     <div>
                         <span>03</span>
-                        <p>Construir</p>
+                        <p data-pt="Construir" data-en="Build">Construir</p>
                     </div>
 
                     <div>
                         <span>04</span>
-                        <p>Melhorar</p>
+                        <p data-pt="Melhorar" data-en="Improve">Melhorar</p>
                     </div>
 
                 </div>
@@ -334,7 +393,13 @@
 
                     <div>
                         <p class="section-label">SELECTED WORK</p>
-                        <h2>Projetos</h2>
+
+                        <h2
+                            data-pt="Projetos"
+                            data-en="Projects"
+                        >
+                            Projetos
+                        </h2>
                     </div>
 
                 </div>
@@ -350,7 +415,11 @@
 
                             <span class="project-number">01</span>
 
-                            <span class="project-status completed">
+                            <span
+                                class="project-status completed"
+                                data-pt="Concluído"
+                                data-en="Completed"
+                            >
                                 Concluído
                             </span>
 
@@ -365,7 +434,10 @@
 
                             <h3>Cyber City</h3>
 
-                            <p>
+                            <p
+                                data-pt="Simulação de uma cidade conectada criada para representar visualmente diferentes estruturas de rede, endereçamento IP, gateways e necessidades de conectividade."
+                                data-en="A connected-city simulation designed to visually represent different network structures, IP addressing, gateways and connectivity requirements."
+                            >
                                 Simulação de uma cidade conectada criada para
                                 representar visualmente diferentes estruturas
                                 de rede, endereçamento IP, gateways e necessidades
@@ -393,7 +465,11 @@
 
                             <span class="project-number">02</span>
 
-                            <span class="project-status development">
+                            <span
+                                class="project-status development"
+                                data-pt="Em desenvolvimento"
+                                data-en="In development"
+                            >
                                 Em desenvolvimento
                             </span>
 
@@ -408,7 +484,10 @@
 
                             <h3>Secure AI Agent</h3>
 
-                            <p>
+                            <p
+                                data-pt="Projeto dedicado à construção de um agente de inteligência artificial com foco em segurança, controle de acesso e proteção contra manipulação de instruções."
+                                data-en="A project focused on building an AI agent with an emphasis on security, access control and protection against instruction manipulation."
+                            >
                                 Projeto dedicado à construção de um agente de
                                 inteligência artificial com foco em segurança,
                                 controle de acesso e proteção contra manipulação
@@ -434,7 +513,11 @@
 
                             <span class="project-number">03</span>
 
-                            <span class="project-status development">
+                            <span
+                                class="project-status development"
+                                data-pt="Em desenvolvimento"
+                                data-en="In development"
+                            >
                                 Em desenvolvimento
                             </span>
 
@@ -449,7 +532,10 @@
 
                             <h3>Indigenous Digital Health</h3>
 
-                            <p>
+                            <p
+                                data-pt="Exploração de uma solução digital de saúde centrada em acessibilidade, comunicação e necessidades de comunidades indígenas na Amazônia."
+                                data-en="Exploration of a digital health solution centered on accessibility, communication and the needs of Indigenous communities in the Amazon."
+                            >
                                 Exploração de uma solução digital de saúde
                                 centrada em acessibilidade, comunicação e
                                 necessidades de comunidades indígenas na Amazônia.
@@ -475,7 +561,11 @@
 
                             <span class="project-number">04</span>
 
-                            <span class="project-status development">
+                            <span
+                                class="project-status development"
+                                data-pt="Em desenvolvimento"
+                                data-en="In development"
+                            >
                                 Em desenvolvimento
                             </span>
 
@@ -490,7 +580,10 @@
 
                             <h3>Amazon Fire & Health Data</h3>
 
-                            <p>
+                            <p
+                                data-pt="Projeto voltado à exploração de dados ambientais, territoriais e de saúde para transformar informações sobre queimadas e qualidade do ar em conhecimento útil para pessoas e comunidades."
+                                data-en="A project exploring environmental, territorial and health data to turn information about wildfires and air quality into useful knowledge for people and communities."
+                            >
                                 Projeto voltado à exploração de dados ambientais,
                                 territoriais e de saúde para transformar
                                 informações sobre queimadas e qualidade do ar
@@ -528,8 +621,18 @@
                     <span class="section-number">03</span>
 
                     <div>
-                        <p class="section-label">BACKGROUND • AMAZON</p>
-                        <h2>Uma trajetória antes do código</h2>
+
+                        <p class="section-label">
+                            BACKGROUND • AMAZON
+                        </p>
+
+                        <h2
+                            data-pt="Uma trajetória antes do código"
+                            data-en="A journey before code"
+                        >
+                            Uma trajetória antes do código
+                        </h2>
+
                     </div>
 
                 </div>
@@ -539,14 +642,31 @@
 
                     <div>
 
-                        <p class="journey-kicker">
+                        <p
+                            class="journey-kicker"
+                            data-pt="SAÚDE • EDUCAÇÃO • AMAZÔNIA"
+                            data-en="HEALTH • EDUCATION • AMAZON"
+                        >
                             SAÚDE • EDUCAÇÃO • AMAZÔNIA
                         </p>
 
                         <h3>
-                            Antes da tecnologia,
-                            vieram as pessoas e os
-                            <span>problemas reais.</span>
+
+                            <span
+                                data-pt="Antes da tecnologia,"
+                                data-en="Before technology,"
+                            >Antes da tecnologia,</span>
+
+                            <span
+                                data-pt="vieram as pessoas e os"
+                                data-en="came people and"
+                            >vieram as pessoas e os</span>
+
+                            <span
+                                data-pt="problemas reais."
+                                data-en="real-world problems."
+                            >problemas reais.</span>
+
                         </h3>
 
                     </div>
@@ -554,7 +674,10 @@
 
                     <div class="journey-description">
 
-                        <p>
+                        <p
+                            data-pt="Durante minha formação em Farmácia, participei de experiências de campo em São Gabriel da Cachoeira, no Amazonas, envolvendo educação em saúde, pesquisa e atividades junto a comunidades indígenas."
+                            data-en="During my Pharmacy degree, I took part in field experiences in São Gabriel da Cachoeira, Amazonas, involving health education, research and activities with Indigenous communities."
+                        >
                             Durante minha formação em Farmácia, participei de
                             experiências de campo em São Gabriel da Cachoeira,
                             no Amazonas, envolvendo educação em saúde, pesquisa
@@ -562,9 +685,18 @@
                         </p>
 
                         <p>
-                            Essas experiências fortaleceram uma forma de pensar
-                            que hoje levo para a tecnologia:
-                            <strong>
+                            <span
+                                data-pt="Essas experiências fortaleceram uma forma de pensar que hoje levo para a tecnologia:"
+                                data-en="These experiences strengthened an approach I now bring to technology:"
+                            >
+                                Essas experiências fortaleceram uma forma de pensar
+                                que hoje levo para a tecnologia:
+                            </span>
+
+                            <strong
+                                data-pt=" compreender o contexto antes de propor uma solução."
+                                data-en=" understand the context before proposing a solution."
+                            >
                                 compreender o contexto antes de propor uma solução.
                             </strong>
                         </p>
@@ -582,12 +714,20 @@
 
                         <img
                             src="assets/images/amazon-portrait.jpeg"
-                            alt="Sunmily Oliveira durante experiência em São Gabriel da Cachoeira, Amazonas"
+                            alt="Sunmily Oliveira em São Gabriel da Cachoeira, Amazonas"
                         >
 
                         <figcaption>
+
                             <span>São Gabriel da Cachoeira</span>
-                            Amazonas • Brasil
+
+                            <span
+                                data-pt="Amazonas • Brasil"
+                                data-en="Amazonas • Brazil"
+                            >
+                                Amazonas • Brasil
+                            </span>
+
                         </figcaption>
 
                     </figure>
@@ -599,18 +739,26 @@
                             FIELD EXPERIENCE / 01
                         </div>
 
-                        <h4>
-                            Educação em saúde
-                            na prática.
+                        <h4
+                            data-pt="Educação em saúde na prática."
+                            data-en="Health education in practice."
+                        >
+                            Educação em saúde na prática.
                         </h4>
 
-                        <p>
+                        <p
+                            data-pt="Durante o estágio rural, participei de atividades educativas voltadas à transformação de conhecimentos técnicos em orientações práticas e acessíveis."
+                            data-en="During my rural internship, I participated in educational activities focused on translating technical knowledge into practical and accessible guidance."
+                        >
                             Durante o estágio rural, participei de atividades
                             educativas voltadas à transformação de conhecimentos
                             técnicos em orientações práticas e acessíveis.
                         </p>
 
-                        <p>
+                        <p
+                            data-pt="Em uma dessas experiências, conduzi uma atividade prática sobre preparação de repelente natural junto a uma comunidade indígena."
+                            data-en="In one of these experiences, I led a practical activity on preparing natural insect repellent with an Indigenous community."
+                        >
                             Em uma dessas experiências, conduzi uma atividade
                             prática sobre preparação de repelente natural junto
                             a uma comunidade indígena.
@@ -623,12 +771,25 @@
 
                         <img
                             src="assets/images/health-education-field.jpeg"
-                            alt="Sunmily Oliveira conduzindo atividade de educação em saúde durante estágio rural"
+                            alt="Atividade de educação em saúde durante estágio rural"
                         >
 
                         <figcaption>
-                            <span>Educação em saúde</span>
-                            Experiência de campo
+
+                            <span
+                                data-pt="Educação em saúde"
+                                data-en="Health education"
+                            >
+                                Educação em saúde
+                            </span>
+
+                            <span
+                                data-pt="Experiência de campo"
+                                data-en="Field experience"
+                            >
+                                Experiência de campo
+                            </span>
+
                         </figcaption>
 
                     </figure>
@@ -647,11 +808,17 @@
 
                     <div class="research-content">
 
-                        <h4>
+                        <h4
+                            data-pt="Pesquisa, conhecimento tradicional e saúde."
+                            data-en="Research, traditional knowledge and health."
+                        >
                             Pesquisa, conhecimento tradicional e saúde.
                         </h4>
 
-                        <p>
+                        <p
+                            data-pt="Também participei de pesquisa sobre o uso de plantas medicinais entre usuários de unidades básicas de saúde de São Gabriel da Cachoeira, explorando a transmissão de conhecimentos, práticas de cuidado e o contexto sociocultural da região."
+                            data-en="I also participated in research on medicinal plant use among patients of primary healthcare units in São Gabriel da Cachoeira, exploring knowledge transmission, care practices and the region's sociocultural context."
+                        >
                             Também participei de pesquisa sobre o uso de plantas
                             medicinais entre usuários de unidades básicas de
                             saúde de São Gabriel da Cachoeira, explorando a
@@ -672,7 +839,7 @@
 
                         <img
                             src="assets/images/dsei-alto-rio-negro.jpg"
-                            alt="Registro da experiência de Sunmily Oliveira no DSEI Alto Rio Negro"
+                            alt="Registro da experiência no DSEI Alto Rio Negro"
                         >
 
                     </figure>
@@ -688,7 +855,10 @@
                             DSEI Alto Rio Negro
                         </h4>
 
-                        <p>
+                        <p
+                            data-pt="Registro da experiência durante o estágio rural em São Gabriel da Cachoeira, Amazonas."
+                            data-en="A record of my rural internship experience in São Gabriel da Cachoeira, Amazonas."
+                        >
                             Registro da experiência durante o estágio rural
                             em São Gabriel da Cachoeira, Amazonas.
                         </p>
@@ -703,10 +873,30 @@
                     <span></span>
 
                     <p>
-                        Essa trajetória não define onde quero permanecer.
-                        Ela explica <strong>como aprendi a observar problemas</strong>
-                        e por que hoje quero usar tecnologia para construir
-                        novas formas de resolvê-los.
+
+                        <span
+                            data-pt="Essa trajetória não define onde quero permanecer. Ela explica "
+                            data-en="This journey does not define where I intend to remain. It explains "
+                        >
+                            Essa trajetória não define onde quero permanecer.
+                            Ela explica
+                        </span>
+
+                        <strong
+                            data-pt="como aprendi a observar problemas"
+                            data-en="how I learned to examine problems"
+                        >
+                            como aprendi a observar problemas
+                        </strong>
+
+                        <span
+                            data-pt=" e por que hoje quero usar tecnologia para construir novas formas de resolvê-los."
+                            data-en=" and why I now want to use technology to build new ways of solving them."
+                        >
+                            e por que hoje quero usar tecnologia para construir
+                            novas formas de resolvê-los.
+                        </span>
+
                     </p>
 
                 </div>
@@ -729,8 +919,18 @@
                     <span class="section-number">04</span>
 
                     <div>
-                        <p class="section-label">LEARNING</p>
-                        <h2>Em desenvolvimento</h2>
+
+                        <p class="section-label">
+                            LEARNING
+                        </p>
+
+                        <h2
+                            data-pt="Em desenvolvimento"
+                            data-en="Currently developing"
+                        >
+                            Em desenvolvimento
+                        </h2>
+
                     </div>
 
                 </div>
@@ -738,7 +938,10 @@
 
                 <div class="learning-content">
 
-                    <p>
+                    <p
+                        data-pt="Minha formação em tecnologia está em construção contínua. Atualmente concentro meus estudos e projetos nestas áreas:"
+                        data-en="My technology journey is continuously evolving. I currently focus my studies and projects on these areas:"
+                    >
                         Minha formação em tecnologia está em construção contínua.
                         Atualmente concentro meus estudos e projetos nestas áreas:
                     </p>
@@ -770,11 +973,27 @@
                 </p>
 
                 <h2>
-                    Vamos construir algo
-                    <span>interessante?</span>
+
+                    <span
+                        data-pt="Vamos construir algo"
+                        data-en="Let's build something"
+                    >
+                        Vamos construir algo
+                    </span>
+
+                    <span
+                        data-pt="interessante?"
+                        data-en="interesting?"
+                    >
+                        interessante?
+                    </span>
+
                 </h2>
 
-                <p>
+                <p
+                    data-pt="Estou construindo minha trajetória em tecnologia e aberta a conexões, aprendizado, colaboração e novas oportunidades."
+                    data-en="I am building my career in technology and open to connections, learning, collaboration and new opportunities."
+                >
                     Estou construindo minha trajetória em tecnologia e aberta
                     a conexões, aprendizado, colaboração e novas oportunidades.
                 </p>
@@ -785,6 +1004,8 @@
                     <a
                         href="mailto:sunmilyjenifer@gmail.com"
                         class="contact-link"
+                        data-pt="E-mail ↗"
+                        data-en="Email ↗"
                     >
                         E-mail ↗
                     </a>
@@ -828,13 +1049,19 @@
                 © 2026 Sunmily Oliveira
             </p>
 
-            <p>
-                Manaus • Amazonas • Brazil
+            <p
+                data-pt="Manaus • Amazonas • Brasil"
+                data-en="Manaus • Amazonas • Brazil"
+            >
+                Manaus • Amazonas • Brasil
             </p>
 
         </div>
 
     </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 
