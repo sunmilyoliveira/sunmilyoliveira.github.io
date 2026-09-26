@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Portfólio de Sunmily Oliveira — tecnologia, inteligência artificial, cibersegurança, redes e projetos de impacto.">
+        content="Portfólio de Sunmily Oliveira: tecnologia, inteligência artificial, cibersegurança, redes e projetos de impacto.">
 
     <title>Sunmily Oliveira | Technology Portfolio</title>
 
@@ -20,7 +20,6 @@
     ========================== -->
 
     <header class="header">
-
         <nav class="navbar container">
 
             <a href="#home" class="logo">
@@ -41,7 +40,6 @@
             </div>
 
         </nav>
-
     </header>
 
 
@@ -51,135 +49,186 @@
              HERO
         ========================== -->
 
-        <section class="hero container" id="home">
+        <section class="hero" id="home">
 
-            <div class="hero-content">
+            <!-- Background da Amazônia -->
+            <div class="hero-background" aria-hidden="true"></div>
+            <div class="hero-overlay" aria-hidden="true"></div>
 
-                <p class="eyebrow">
-                    TECHNOLOGY • AI • CYBERSECURITY
-                </p>
 
-                <h1>
-                    Tecnologia para
-                    <span>problemas reais.</span>
-                </h1>
+            <!-- Rede tecnológica animada -->
+            <div class="hero-tech" aria-hidden="true">
 
-                <p class="hero-description">
-                    Construindo uma trajetória que conecta análise,
-                    segurança, inovação e impacto — da Amazônia
-                    para a tecnologia.
-                </p>
+                <svg
+                    class="tech-network"
+                    viewBox="0 0 700 650"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
 
-                <div class="hero-buttons">
+                    <defs>
 
-                    <a href="#projects" class="button button-primary">
-                        Ver projetos
-                    </a>
+                        <filter id="greenGlow">
+                            <feGaussianBlur stdDeviation="5" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
 
-                    <a href="#about" class="button button-secondary">
-                        Sobre mim
-                    </a>
+                        <filter id="goldGlow">
+                            <feGaussianBlur stdDeviation="4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
 
-                </div>
+                    </defs>
+
+
+                    <!-- Conexões -->
+
+                    <g class="tech-lines">
+
+                        <path
+                            id="route1"
+                            d="M75 390 C150 315 190 260 280 290
+                               C360 315 380 390 465 365
+                               C535 345 565 275 635 250"
+                        />
+
+                        <path
+                            id="route2"
+                            d="M155 515 C210 455 235 400 280 290
+                               C305 225 355 170 420 120"
+                        />
+
+                        <path
+                            id="route3"
+                            d="M465 365 C515 410 555 470 610 520"
+                        />
+
+                        <path
+                            id="route4"
+                            d="M280 290 C225 310 170 355 115 330"
+                        />
+
+                        <path
+                            id="route5"
+                            d="M465 365 C510 320 560 320 620 345"
+                        />
+
+                    </g>
+
+
+                    <!-- Nós -->
+
+                    <g class="tech-nodes">
+
+                        <circle cx="75" cy="390" r="5" />
+                        <circle cx="155" cy="515" r="4" class="node-gold" />
+                        <circle cx="280" cy="290" r="8" class="node-main" />
+                        <circle cx="465" cy="365" r="7" class="node-main" />
+                        <circle cx="635" cy="250" r="5" />
+                        <circle cx="420" cy="120" r="5" class="node-gold" />
+                        <circle cx="610" cy="520" r="5" />
+                        <circle cx="115" cy="330" r="4" class="node-gold" />
+                        <circle cx="620" cy="345" r="4" />
+
+                    </g>
+
+
+                    <!-- Pulsos viajando pelas conexões -->
+
+                    <circle
+                        class="data-pulse pulse-green"
+                        r="5"
+                        filter="url(#greenGlow)"
+                    >
+                        <animateMotion
+                            dur="8s"
+                            repeatCount="indefinite"
+                            rotate="auto"
+                        >
+                            <mpath href="#route1" />
+                        </animateMotion>
+                    </circle>
+
+
+                    <circle
+                        class="data-pulse pulse-gold"
+                        r="4"
+                        filter="url(#goldGlow)"
+                    >
+                        <animateMotion
+                            dur="10s"
+                            begin="-4s"
+                            repeatCount="indefinite"
+                            rotate="auto"
+                        >
+                            <mpath href="#route2" />
+                        </animateMotion>
+                    </circle>
+
+
+                    <circle
+                        class="data-pulse pulse-green"
+                        r="4"
+                        filter="url(#greenGlow)"
+                    >
+                        <animateMotion
+                            dur="7s"
+                            begin="-2s"
+                            repeatCount="indefinite"
+                            rotate="auto"
+                        >
+                            <mpath href="#route3" />
+                        </animateMotion>
+                    </circle>
+
+                </svg>
 
             </div>
 
 
-            <!-- Rede digital orgânica -->
+            <!-- Conteúdo principal -->
 
-            <div class="hero-network" aria-hidden="true">
+            <div class="hero-inner container">
 
-                <svg
-                    viewBox="0 0 600 520"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="network-svg"
-                >
+                <div class="hero-content">
 
-                    <!-- conexões principais -->
-
-                    <g class="network-lines">
-
-                        <path d="M72 264 C140 235, 164 164, 228 170" />
-
-                        <path d="M228 170 C287 175, 305 231, 350 250" />
-
-                        <path d="M350 250 C407 274, 433 225, 508 203" />
-
-                        <path d="M350 250 C396 314, 424 359, 503 383" />
-
-                        <path d="M350 250 C313 302, 297 363, 251 423" />
-
-                        <path d="M228 170 C211 119, 242 80, 293 48" />
-
-                        <path d="M228 170 C173 196, 140 327, 91 370" />
-
-                        <path d="M91 370 C147 365, 191 397, 251 423" />
-
-                        <path d="M508 203 C532 253, 526 328, 503 383" />
-
-                    </g>
-
-
-                    <!-- ramificações secundárias -->
-
-                    <g class="network-branches">
-
-                        <path d="M72 264 C46 224, 40 190, 50 147" />
-
-                        <path d="M91 370 C58 399, 48 432, 61 466" />
-
-                        <path d="M293 48 C343 63, 377 83, 407 118" />
-
-                        <path d="M407 118 C453 112, 494 124, 536 151" />
-
-                        <path d="M503 383 C524 414, 535 443, 531 475" />
-
-                        <path d="M251 423 C213 448, 183 466, 145 473" />
-
-                    </g>
-
-
-                    <!-- nós -->
-
-                    <g class="network-nodes">
-
-                        <circle cx="72" cy="264" r="5" />
-                        <circle cx="228" cy="170" r="6" />
-                        <circle cx="350" cy="250" r="8" class="node-main" />
-                        <circle cx="508" cy="203" r="5" />
-                        <circle cx="503" cy="383" r="6" />
-                        <circle cx="251" cy="423" r="5" />
-                        <circle cx="91" cy="370" r="5" />
-                        <circle cx="293" cy="48" r="5" />
-
-                        <circle cx="50" cy="147" r="4" />
-                        <circle cx="61" cy="466" r="4" />
-                        <circle cx="407" cy="118" r="4" />
-                        <circle cx="536" cy="151" r="4" />
-                        <circle cx="531" cy="475" r="4" />
-                        <circle cx="145" cy="473" r="4" />
-
-                        <circle cx="407" cy="118" r="5" class="node-earth" />
-                        <circle cx="91" cy="370" r="5" class="node-earth" />
-
-                    </g>
-
-                </svg>
-
-
-                <div class="network-caption">
-                    <span>01</span>
-                    <p>
-                        pessoas<br>
-                        dados<br>
-                        tecnologia
+                    <p class="eyebrow">
+                        TECHNOLOGY • AI • CYBERSECURITY
                     </p>
+
+                    <h1>
+                        Tecnologia para
+                        <span>problemas reais.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Construindo uma trajetória que conecta análise,
+                        segurança, inovação e impacto para transformar
+                        problemas reais em soluções.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#projects" class="button button-primary">
+                            Ver projetos
+                        </a>
+
+                        <a href="#about" class="button button-secondary">
+                            Sobre mim
+                        </a>
+
+                    </div>
+
                 </div>
 
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -271,7 +320,6 @@
         </section>
 
 
-
         <!-- =========================
              PROJECTS
         ========================== -->
@@ -293,7 +341,6 @@
 
 
                 <div class="projects-grid">
-
 
                     <!-- CYBER CITY -->
 
@@ -338,7 +385,6 @@
                     </article>
 
 
-
                     <!-- SECURE AI AGENT -->
 
                     <article class="project-card">
@@ -380,7 +426,6 @@
                     </article>
 
 
-
                     <!-- INDIGENOUS DIGITAL HEALTH -->
 
                     <article class="project-card">
@@ -420,7 +465,6 @@
                         </div>
 
                     </article>
-
 
 
                     <!-- AMAZON FIRE -->
@@ -471,9 +515,8 @@
         </section>
 
 
-
         <!-- =========================
-             JOURNEY / AMAZON
+             JOURNEY
         ========================== -->
 
         <section class="section journey" id="journey">
@@ -531,11 +574,9 @@
                 </div>
 
 
-
-                <!-- Editorial image composition -->
+                <!-- FIELD EXPERIENCE -->
 
                 <div class="journey-gallery">
-
 
                     <figure class="journey-photo portrait-photo">
 
@@ -550,7 +591,6 @@
                         </figcaption>
 
                     </figure>
-
 
 
                     <div class="journey-story">
@@ -579,7 +619,6 @@
                     </div>
 
 
-
                     <figure class="journey-photo field-photo">
 
                         <img
@@ -597,8 +636,7 @@
                 </div>
 
 
-
-                <!-- Research -->
+                <!-- RESEARCH -->
 
                 <div class="journey-research">
 
@@ -610,8 +648,7 @@
                     <div class="research-content">
 
                         <h4>
-                            Pesquisa, conhecimento
-                            tradicional e saúde.
+                            Pesquisa, conhecimento tradicional e saúde.
                         </h4>
 
                         <p>
@@ -627,8 +664,7 @@
                 </div>
 
 
-
-                <!-- DSEI documentary photo -->
+                <!-- DSEI -->
 
                 <div class="dsei-record">
 
@@ -669,7 +705,7 @@
                     <p>
                         Essa trajetória não define onde quero permanecer.
                         Ela explica <strong>como aprendi a observar problemas</strong>
-                        — e por que hoje quero usar tecnologia para construir
+                        e por que hoje quero usar tecnologia para construir
                         novas formas de resolvê-los.
                     </p>
 
@@ -678,7 +714,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -720,7 +755,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -780,7 +814,6 @@
         </section>
 
     </main>
-
 
 
     <!-- =========================
