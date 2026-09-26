@@ -368,10 +368,59 @@ footer {
     width: 100%;
   }
 }
+  .back-portfolio {
+    position: fixed;
+    top: 24px;
+    left: 28px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    color: #8fa99b;
+    background: rgba(8, 18, 14, 0.82);
+    border: 1px solid rgba(93, 255, 174, 0.18);
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-portfolio:hover {
+    color: #b9ffd8;
+    border-color: rgba(93, 255, 174, 0.5);
+    background: rgba(15, 35, 26, 0.95);
+    transform: translateX(-3px);
+}
+
+@media (max-width: 700px) {
+    .back-portfolio {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin: 18px 18px 0;
+    }
+}
 </style>
 </head>
 
 <body>
+  <a href="index.html#projects" class="back-portfolio">
+    ← VOLTAR AO PORTFÓLIO
+</a>
 
 <main class="container">
 
