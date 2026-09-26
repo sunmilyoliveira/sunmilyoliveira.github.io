@@ -1,499 +1,688 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Secure AI Agent — Phishing Assistant</title>
+<title>Secure AI Agent — Phishing Assistant</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+:root {
+  --bg: #07100e;
+  --card: rgba(11, 24, 21, 0.88);
+  --card2: #0b1714;
+  --border: #19352d;
+  --green: #35e69a;
+  --green-soft: rgba(53,230,154,.10);
+  --text: #f1f7f4;
+  --muted: #8ca49b;
+  --red: #ff6464;
+  --yellow: #ffc857;
+}
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 20% 20%, #10283a 0%, transparent 35%),
-        radial-gradient(circle at 80% 80%, #10251f 0%, transparent 35%),
-        #070b10;
-      color: #e8f0f7;
-      font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 18px;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .app {
-      width: 100%;
-      max-width: 820px;
-    }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(23,105,79,.24), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(16,69,57,.20), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  padding: 45px 20px;
+}
 
-    .badge {
-      display: inline-block;
-      border: 1px solid #2fdb9d;
-      color: #2fdb9d;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      margin-bottom: 18px;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+}
 
-    h1 {
-      font-size: clamp(34px, 7vw, 64px);
-      line-height: 0.95;
-      letter-spacing: -2px;
-      margin-bottom: 14px;
-    }
+/* HEADER */
 
-    h1 span {
-      color: #2fdb9d;
-    }
+.topline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
 
-    .subtitle {
-      color: #91a2b2;
-      line-height: 1.6;
-      max-width: 650px;
-      margin-bottom: 30px;
-    }
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
 
-    .card {
-      background: rgba(13, 20, 27, 0.92);
-      border: 1px solid #25333e;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-    }
+h1 {
+  font-size: clamp(42px, 8vw, 72px);
+  line-height: .92;
+  letter-spacing: -3px;
+  max-width: 700px;
+}
 
-    .label {
-      display: block;
-      font-size: 13px;
-      color: #aab8c4;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+h1 span {
+  color: var(--green);
+}
 
-    textarea {
-      width: 100%;
-      min-height: 190px;
-      resize: vertical;
-      border: 1px solid #30414e;
-      background: #090e13;
-      color: #eef6fb;
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 15px;
-      line-height: 1.5;
-      outline: none;
-      transition: 0.2s;
-    }
+.subtitle {
+  max-width: 650px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 20px 0 32px;
+  font-size: 15px;
+}
 
-    textarea:focus {
-      border-color: #2fdb9d;
-      box-shadow: 0 0 0 3px rgba(47, 219, 157, 0.08);
-    }
+/* TECH TAGS */
 
-    .actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-      flex-wrap: wrap;
-    }
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
 
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 13px 18px;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.tag {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #9db5ac;
+  border: 1px solid var(--border);
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: rgba(10,25,21,.7);
+}
 
-    #analyzeBtn {
-      background: #2fdb9d;
-      color: #04110c;
-      flex: 1;
-      min-width: 190px;
-    }
+/* MAIN CARD */
 
-    #analyzeBtn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
+.card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.35);
+}
 
-    #exampleBtn {
-      background: #18232c;
-      color: #c6d2dc;
-      border: 1px solid #30414e;
-    }
+.label {
+  display: flex;
+  justify-content: space-between;
+  color: #b7c8c1;
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  margin-bottom: 11px;
+}
 
-    button:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-      transform: none !important;
-    }
+#counter {
+  color: #577269;
+  font-weight: 400;
+}
 
-    .privacy {
-      color: #657887;
-      font-size: 11px;
-      margin-top: 12px;
-      line-height: 1.5;
-    }
+textarea {
+  width: 100%;
+  min-height: 190px;
+  background: #06100d;
+  border: 1px solid #24453a;
+  border-radius: 12px;
+  padding: 17px;
+  color: #ecf6f1;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: .2s;
+}
 
-    #error {
-      display: none;
-      margin-top: 20px;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid #713535;
-      background: #241313;
-      color: #ffb3b3;
-      line-height: 1.5;
-    }
+textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(53,230,154,.08);
+}
 
-    #result {
-      display: none;
-      margin-top: 22px;
-      border-top: 1px solid #25333e;
-      padding-top: 22px;
-    }
+textarea::placeholder {
+  color: #4f6960;
+}
 
-    .result-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+/* BUTTONS */
 
-    .result-title {
-      color: #91a2b2;
-      font-size: 12px;
-      letter-spacing: 1.4px;
-    }
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
 
-    .risk {
-      font-size: 13px;
-      font-weight: bold;
-      padding: 8px 13px;
-      border-radius: 999px;
-    }
+button {
+  border-radius: 9px;
+  padding: 14px 18px;
+  border: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: .2s;
+}
 
-    .risk-low {
-      background: rgba(47, 219, 157, 0.12);
-      color: #2fdb9d;
-      border: 1px solid rgba(47, 219, 157, 0.4);
-    }
+#analyzeBtn {
+  background: var(--green);
+  color: #03100b;
+  flex: 1;
+}
 
-    .risk-medium {
-      background: rgba(245, 185, 66, 0.12);
-      color: #f5b942;
-      border: 1px solid rgba(245, 185, 66, 0.4);
-    }
+#analyzeBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(53,230,154,.18);
+}
 
-    .risk-high {
-      background: rgba(255, 91, 91, 0.12);
-      color: #ff6b6b;
-      border: 1px solid rgba(255, 91, 91, 0.4);
-    }
+#exampleBtn {
+  background: #10231d;
+  color: #b7cbc3;
+  border: 1px solid #27483d;
+}
 
-    .section-title {
-      margin: 18px 0 10px;
-      font-size: 13px;
-      color: #d7e1e8;
-    }
+#exampleBtn:hover {
+  border-color: #3a6656;
+}
 
-    #signals {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-    }
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none !important;
+}
 
-    #signals li {
-      background: #0b1218;
-      border: 1px solid #21303b;
-      padding: 11px 13px;
-      border-radius: 9px;
-      color: #bdc9d2;
-      line-height: 1.4;
-      font-size: 14px;
-    }
+/* INFO */
 
-    #signals li::before {
-      content: "⚠";
-      margin-right: 8px;
-      color: #f5b942;
-    }
+.info {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #607970;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 13px;
+}
 
-    #recommendation {
-      background: #0b1218;
-      border-left: 3px solid #2fdb9d;
-      border-radius: 8px;
-      padding: 14px;
-      color: #c7d2da;
-      line-height: 1.6;
-      font-size: 14px;
-    }
+/* ERROR */
 
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      color: #526472;
-      font-size: 11px;
-      line-height: 1.6;
-    }
+#error {
+  display: none;
+  margin-top: 20px;
+  background: rgba(255,80,80,.08);
+  border: 1px solid rgba(255,80,80,.3);
+  color: #ffaaaa;
+  padding: 14px;
+  border-radius: 9px;
+  font-size: 13px;
+}
 
-    @media (max-width: 600px) {
-      .card {
-        padding: 18px;
-      }
+/* RESULT */
 
-      h1 {
-        letter-spacing: -1px;
-      }
+#result {
+  display: none;
+  margin-top: 26px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+}
 
-      .actions {
-        flex-direction: column;
-      }
+.resultTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
 
-      #analyzeBtn,
-      #exampleBtn {
-        width: 100%;
-      }
-    }
-  </style>
+.resultLabel {
+  color: #718c82;
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+}
+
+.risk {
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: .8px;
+  font-weight: 800;
+}
+
+.low {
+  color: var(--green);
+  border: 1px solid rgba(53,230,154,.4);
+  background: rgba(53,230,154,.08);
+}
+
+.medium {
+  color: var(--yellow);
+  border: 1px solid rgba(255,200,87,.4);
+  background: rgba(255,200,87,.08);
+}
+
+.high {
+  color: #ff7777;
+  border: 1px solid rgba(255,100,100,.4);
+  background: rgba(255,100,100,.08);
+}
+
+.sectionTitle {
+  margin: 23px 0 11px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  color: #b9cac3;
+}
+
+#signals {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+#signals li {
+  background: #081410;
+  border: 1px solid #18352c;
+  border-radius: 9px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #aebfb8;
+  line-height: 1.5;
+}
+
+#signals li::before {
+  content: "⚠";
+  color: var(--yellow);
+  margin-right: 9px;
+}
+
+#recommendation {
+  background: #081410;
+  border: 1px solid #18352c;
+  border-left: 3px solid var(--green);
+  border-radius: 9px;
+  padding: 15px;
+  color: #bdccc6;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* SECURITY SECTION */
+
+.security {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--green-soft);
+  border: 1px solid rgba(53,230,154,.18);
+}
+
+.securityTitle {
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.security p {
+  color: #79988c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  color: #3e5b51;
+  font-size: 10px;
+  letter-spacing: .6px;
+  line-height: 1.8;
+  margin-top: 25px;
+}
+
+@media (max-width:600px) {
+  body {
+    padding: 30px 15px;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  .card {
+    padding: 19px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  #analyzeBtn,
+  #exampleBtn {
+    width: 100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="app">
+<main class="container">
 
-    <div class="badge">AI + CYBERSECURITY</div>
+  <div class="topline">
+    <span class="dot"></span>
+    SECURE AI SYSTEM ONLINE
+  </div>
 
-    <h1>
-      SECURE AI<br>
-      <span>AGENT</span>
-    </h1>
+  <h1>
+    PHISHING<br>
+    <span>ASSISTANT.</span>
+  </h1>
 
-    <p class="subtitle">
-      Phishing Assistant — analise mensagens suspeitas com inteligência
-      artificial e identifique sinais de phishing e engenharia social.
-    </p>
+  <p class="subtitle">
+    Um agente de inteligência artificial desenvolvido para analisar
+    mensagens suspeitas, identificar sinais de phishing e reconhecer
+    tentativas de engenharia social.
+  </p>
 
-    <section class="card">
+  <div class="tags">
+    <span class="tag">AI AGENT</span>
+    <span class="tag">CYBERSECURITY</span>
+    <span class="tag">GEMINI</span>
+    <span class="tag">PROMPT INJECTION DEFENSE</span>
+  </div>
 
-      <label class="label" for="message">
-        MENSAGEM PARA ANÁLISE
-      </label>
+  <section class="card">
 
-      <textarea
-        id="message"
-        maxlength="5000"
-        placeholder="Cole aqui um e-mail, SMS ou mensagem suspeita..."
-      ></textarea>
-
-      <div class="actions">
-
-        <button id="analyzeBtn">
-          ANALISAR MENSAGEM
-        </button>
-
-        <button id="exampleBtn">
-          USAR EXEMPLO
-        </button>
-
-      </div>
-
-      <p class="privacy">
-        Demonstração educacional. Evite inserir senhas, dados bancários
-        ou outras informações pessoais.
-      </p>
-
-      <div id="error"></div>
-
-      <div id="result">
-
-        <div class="result-header">
-
-          <div class="result-title">
-            RESULTADO DA ANÁLISE
-          </div>
-
-          <div id="risk" class="risk"></div>
-
-        </div>
-
-        <h3 class="section-title">
-          SINAIS IDENTIFICADOS
-        </h3>
-
-        <ul id="signals"></ul>
-
-        <h3 class="section-title">
-          RECOMENDAÇÃO
-        </h3>
-
-        <div id="recommendation"></div>
-
-      </div>
-
-    </section>
-
-    <div class="footer">
-      Secure AI Agent · Phishing Assistant<br>
-      Projeto demonstrativo de AI Security e proteção contra Prompt Injection
+    <div class="label">
+      <span>MENSAGEM PARA ANÁLISE</span>
+      <span id="counter">0 / 5000</span>
     </div>
 
-  </main>
+    <textarea
+      id="message"
+      maxlength="5000"
+      placeholder="Cole aqui um e-mail, SMS ou mensagem suspeita..."
+    ></textarea>
 
-  <script>
-    const messageInput = document.getElementById("message");
-    const analyzeBtn = document.getElementById("analyzeBtn");
-    const exampleBtn = document.getElementById("exampleBtn");
+    <div class="actions">
 
-    const resultBox = document.getElementById("result");
-    const errorBox = document.getElementById("error");
+      <button id="analyzeBtn">
+        ANALISAR MENSAGEM
+      </button>
 
-    const riskBox = document.getElementById("risk");
-    const signalsBox = document.getElementById("signals");
-    const recommendationBox =
-      document.getElementById("recommendation");
+      <button id="exampleBtn">
+        TESTAR EXEMPLO
+      </button>
 
-    const exampleMessage =
-      "URGENTE: Sua conta será bloqueada hoje. " +
-      "Confirme imediatamente sua senha e seus dados no link abaixo " +
-      "para evitar a suspensão do acesso.";
+    </div>
 
-    exampleBtn.addEventListener("click", () => {
-      messageInput.value = exampleMessage;
-      messageInput.focus();
-    });
+    <div class="info">
+      <span>◈</span>
+      <span>
+        Demonstração educacional. Não insira senhas,
+        dados bancários ou informações pessoais.
+      </span>
+    </div>
 
-    analyzeBtn.addEventListener("click", analyzeMessage);
+    <div id="error"></div>
 
-    async function analyzeMessage() {
+    <div id="result">
 
-      const message = messageInput.value.trim();
+      <div class="resultTop">
 
-      errorBox.style.display = "none";
-      resultBox.style.display = "none";
+        <div class="resultLabel">
+          RESULTADO DA ANÁLISE
+        </div>
 
-      if (!message) {
-        showError("Cole ou digite uma mensagem antes de analisar.");
-        return;
-      }
+        <div id="risk" class="risk"></div>
 
-      analyzeBtn.disabled = true;
-      exampleBtn.disabled = true;
-      analyzeBtn.textContent = "ANALISANDO...";
+      </div>
 
-      try {
+      <div class="sectionTitle">
+        SINAIS IDENTIFICADOS
+      </div>
 
-        const response = await fetch("/api/gemini", {
-          method: "POST",
+      <ul id="signals"></ul>
 
-          headers: {
-            "Content-Type": "application/json"
-          },
+      <div class="sectionTitle">
+        RECOMENDAÇÃO
+      </div>
 
-          body: JSON.stringify({
-            message: message
-          })
-        });
+      <div id="recommendation"></div>
 
-        const data = await response.json();
+    </div>
 
-        if (!response.ok) {
-          throw new Error(
-            data.error || "Não foi possível analisar a mensagem."
-          );
-        }
+  </section>
 
-        showResult(data);
+  <section class="security">
 
-      } catch (error) {
+    <div class="securityTitle">
+      ◈ PROMPT INJECTION DEFENSE
+    </div>
 
-        console.error(error);
+    <p>
+      O conteúdo enviado é tratado como dado não confiável para análise,
+      separado das instruções internas do agente. Tentativas de alterar
+      o comportamento do modelo dentro da própria mensagem são
+      desconsideradas e podem ser identificadas como sinal de manipulação.
+    </p>
 
-        showError(
-          error.message ||
-          "Ocorreu um erro ao conectar com o Secure AI Agent."
-        );
+  </section>
 
-      } finally {
+  <footer>
+    SECURE AI AGENT · PHISHING ASSISTANT<br>
+    AI SECURITY · INPUT VALIDATION · STRUCTURED OUTPUT · PROMPT INJECTION
+  </footer>
 
-        analyzeBtn.disabled = false;
-        exampleBtn.disabled = false;
-        analyzeBtn.textContent = "ANALISAR MENSAGEM";
-      }
-    }
+</main>
 
-    function showResult(data) {
+<script>
 
-      const risk = String(data.risk || "").toUpperCase();
+const messageInput = document.getElementById("message");
+const analyzeBtn = document.getElementById("analyzeBtn");
+const exampleBtn = document.getElementById("exampleBtn");
 
-      riskBox.textContent = "RISCO " + risk;
+const resultBox = document.getElementById("result");
+const errorBox = document.getElementById("error");
 
-      riskBox.className = "risk";
+const riskBox = document.getElementById("risk");
+const signalsBox = document.getElementById("signals");
+const recommendationBox =
+  document.getElementById("recommendation");
 
-      if (risk === "ALTO") {
-        riskBox.classList.add("risk-high");
-      } else if (risk === "MÉDIO") {
-        riskBox.classList.add("risk-medium");
-      } else {
-        riskBox.classList.add("risk-low");
-      }
+const counter =
+  document.getElementById("counter");
 
-      signalsBox.innerHTML = "";
+const exampleMessage =
+  "URGENTE: Sua conta será bloqueada hoje. " +
+  "Confirme imediatamente sua senha e seus dados no link abaixo " +
+  "para evitar a suspensão do acesso.";
 
-      const signals = Array.isArray(data.signals)
-        ? data.signals
-        : [];
+messageInput.addEventListener("input", () => {
+  counter.textContent =
+    messageInput.value.length + " / 5000";
+});
 
-      if (signals.length === 0) {
+exampleBtn.addEventListener("click", () => {
 
-        const item = document.createElement("li");
-        item.textContent =
-          "Nenhum sinal relevante de phishing foi identificado.";
+  messageInput.value = exampleMessage;
 
-        signalsBox.appendChild(item);
+  counter.textContent =
+    messageInput.value.length + " / 5000";
 
-      } else {
+  messageInput.focus();
+});
 
-        signals.forEach((signal) => {
+analyzeBtn.addEventListener(
+  "click",
+  analyzeMessage
+);
 
-          const item = document.createElement("li");
+async function analyzeMessage() {
 
-          item.textContent = signal;
+  const message =
+    messageInput.value.trim();
 
-          signalsBox.appendChild(item);
+  errorBox.style.display = "none";
+  resultBox.style.display = "none";
 
-        });
-      }
+  if (!message) {
 
-      recommendationBox.textContent =
-        data.recommendation ||
-        "Confirme a origem da mensagem antes de interagir.";
+    showError(
+      "Cole ou digite uma mensagem antes de analisar."
+    );
 
-      resultBox.style.display = "block";
+    return;
+  }
 
-      resultBox.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
+  analyzeBtn.disabled = true;
+  exampleBtn.disabled = true;
+
+  analyzeBtn.textContent =
+    "ANALISANDO...";
+
+  try {
+
+    const response =
+      await fetch("/api/gemini", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          message: message
+        })
       });
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "Não foi possível analisar a mensagem."
+      );
     }
 
-    function showError(message) {
+    showResult(data);
 
-      errorBox.textContent = message;
-      errorBox.style.display = "block";
-    }
-  </script>
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    showError(
+      error.message ||
+      "Erro ao conectar com o Secure AI Agent."
+    );
+  }
+
+  finally {
+
+    analyzeBtn.disabled = false;
+    exampleBtn.disabled = false;
+
+    analyzeBtn.textContent =
+      "ANALISAR MENSAGEM";
+  }
+}
+
+function showResult(data) {
+
+  const risk =
+    String(data.risk || "")
+      .toUpperCase();
+
+  riskBox.textContent =
+    "RISCO " + risk;
+
+  riskBox.className =
+    "risk";
+
+  if (risk === "ALTO") {
+
+    riskBox.classList.add("high");
+
+  }
+
+  else if (risk === "MÉDIO") {
+
+    riskBox.classList.add("medium");
+
+  }
+
+  else {
+
+    riskBox.classList.add("low");
+
+  }
+
+  signalsBox.innerHTML = "";
+
+  const signals =
+    Array.isArray(data.signals)
+      ? data.signals
+      : [];
+
+  if (signals.length === 0) {
+
+    const item =
+      document.createElement("li");
+
+    item.textContent =
+      "Nenhum sinal relevante de phishing foi identificado.";
+
+    signalsBox.appendChild(item);
+  }
+
+  else {
+
+    signals.forEach(signal => {
+
+      const item =
+        document.createElement("li");
+
+      item.textContent = signal;
+
+      signalsBox.appendChild(item);
+    });
+  }
+
+  recommendationBox.textContent =
+    data.recommendation ||
+    "Confirme a origem da mensagem antes de interagir.";
+
+  resultBox.style.display =
+    "block";
+
+  resultBox.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+function showError(message) {
+
+  errorBox.textContent =
+    message;
+
+  errorBox.style.display =
+    "block";
+}
+
+</script>
 
 </body>
 </html>
